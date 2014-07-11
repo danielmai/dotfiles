@@ -1,0 +1,65 @@
+# Have the full path on the prompt
+# export PS1='\w\$ '
+
+# colorize shell (http://javacolors.blogspot.com/2013/06/colorize-your-macos-x-shell.html)
+# export CLICOLOR=1
+# export LSCOLORS=ExFxBxDxCxegedabagacad
+
+# Have the current directory on the prompt
+export PS1='\W\$ '
+
+# change to the parent directory
+alias ..="cd .."
+
+# change to the parent's parent directory
+alias ...='cd ../../'
+
+# detailed list directory
+alias l='ls -aFhlG'
+
+# Run the slogger command (from anywhere)
+alias slogger='~/github/Slogger/slogger'
+
+# Quit an OS X application
+function quit() {
+    osascript -e 'tell application '\""$1"\"' to quit';
+}
+
+# Get info about HTTP codes
+function http(){
+    curl http://httpcode.info/$1;
+}
+
+# Used for rbenv
+export PATH="$HOME/.rbenv/bin:$PATH"
+eval "$(rbenv init - --no-rehash)"
+
+# add the current directory to the $PATH
+export PATH=$PATH:.
+
+# add /usr/local/bin to the $PATH
+export PATH=$PATH:"/usr/local/bin"
+
+# add ~/bin to the $PATH
+export PATH=$PATH:"/Users/Daniel/bin"
+
+# export PATH=/usr/local/bin:/Users/Daniel/.rbenv/shims:/Users/Daniel/.rbenv/bin:/usr/bin:/bin:/usr/sbin:/sbin:.
+
+# for virtualenvwrapper
+export WORKON_HOME="$HOME/.virtualenvs"
+source /usr/local/bin/virtualenvwrapper.sh
+
+
+# eject disks by name
+function eject(){
+    diskutil unmountDisk /Volumes/$1
+}
+
+# Add environment variable to the glassfish directory
+export GLASSFISH_HOME=~/glassfish4/glassfish
+
+# Increase the history file size to 2000 (originally 500)
+export HISTFILESIZE=2000
+
+# add maven to the path
+export PATH=$PATH:~/bin/apach-maven-3.2.1/bin

@@ -1,0 +1,28 @@
+#!/bin/sh
+
+#
+# prepare Homebrew Cask - http://caskroom.io/
+#
+tap caskroom/cask
+install caskroom/cask/brew-cask
+
+#
+# install these applications
+#
+cask install alfred		# I need my butler
+cask install onepassword	# the best password manager
+cask install skype		# needed for friendly audio/video/im chat
+cask install iterm2		# terminal of choice for its split windows
+cask install google-chrome	# web browser of choice
+cask install dropbox		# the best way to sync files
+cask install github		# a good graphical git client
+cask install hipchat		# the chat that's hip
+cask install bluej		# for cs046 java development
+cask install hydra		# the hackable window manager
+cask install qlstephen          # view plain text files in QuickLook
+
+
+#
+# Add Caskroom to Alfred's search path
+#
+cask alfred link

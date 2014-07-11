@@ -1,0 +1,2 @@
+install wget				# for recursive downloads
+install emacs --HEAD --cocoa --srgb	# the One True Editor
