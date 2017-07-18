@@ -27,3 +27,6 @@ defaults write NSGlobalDomain com.apple.mouse.tapBehavior -int 1
 # Use scroll gesture with the Ctrl (^) modifier key to zoom
 defaults write com.apple.universalaccess closeViewScrollWheelToggle -bool true
 defaults write com.apple.universalaccess HIDScrollZoomModifierMask -int 262144
+
+# Turn off desktop icons
+defaults write com.apple.finder CreateDesktop -bool false
