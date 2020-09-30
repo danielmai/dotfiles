@@ -1,0 +1,108 @@
+general {
+	output_format = "i3bar"
+	colors = true
+	interval = 1
+        markup = "pango"
+}
+
+order += "disk /"
+order += "disk /hdd"
+order += "ethernet enp6s0"
+order += "load"
+order += "tztime date"
+order += "tztime bos"
+order += "tztime lon"
+order += "tztime kiv"
+order += "tztime ind"
+order += "tztime chi"
+order += "tztime aus"
+order += "tztime gmt"
+order += "tztime local"
+
+wireless wlan0 {
+	format_up = "W: (%quality at %essid, %bitrate) %ip"
+	format_down = "W: down"
+}
+
+ethernet enp10s0 {
+	# if you use %speed, i3status requires the cap_net_admin capability
+	format_up = "E: %ip"
+	format_down = "E: down"
+}
+
+run_watch DHCP {
+	pidfile = "/var/run/dhclient*.pid"
+}
+
+run_watch VPNC {
+	# file containing the PID of a vpnc process
+	pidfile = "/var/run/vpnc/pid"
+}
+
+path_exists VPN {
+	# path exists when a VPN tunnel launched by nmcli/nm-applet is active
+	path = "/proc/sys/net/ipv4/conf/tun0"
+}
+
+tztime local {
+        format = "<span foreground='darkorange'>SFO (-7:00):</span> %time"
+	format_time = "%b %d %H:%M:%S"
+}
+
+# Get timezone name with "ls /usr/share/zoneinfo"
+tztime bos {
+        format = "<span foreground='aqua'>BOS (-5:00):</span> %time"
+	format_time = "%m/%d %H:%M"
+        timezone = "US/Eastern"
+}
+tztime lon {
+        format = "<span foreground='aqua'>LON (+1:00):</span> %time"
+	format_time = "%m/%d %H:%M"
+        timezone = "Europe/London"
+}
+tztime kiv {
+        format = "<span foreground='aqua'>UKR (+2:00):</span> %time"
+	format_time = "%m/%d %H:%M"
+        timezone = "Europe/Kiev"
+}
+tztime ind {
+        format = "<span foreground='aqua'>IND (+5:30):</span> %time"
+	format_time = "%m/%d %H:%M"
+        timezone = "Asia/Kolkata"
+}
+tztime chi {
+        format = "<span foreground='aqua'>CHI (+8:00):</span> %time"
+	format_time = "%m/%d %H:%M"
+        timezone = "Asia/Shanghai"
+}
+tztime aus {
+        format = "<span foreground='aqua'>AUS (+10:00):</span> %time"
+	format_time = "%m/%d %H:%M"
+        timezone = "Australia/Tasmania"
+}
+tztime gmt {
+        format = "<span foreground='yellow'>GMT:</span> %time"
+	format_time = "%m/%d %H:%M:%S"
+	timezone = "GMT"
+}
+
+load {
+	format = "%5min"
+}
+
+cpu_temperature 0 {
+	format = "T: %degrees °C"
+	path = "/sys/devices/platform/coretemp.0/temp1_input"
+}
+
+disk "/" {
+	format = "%free (%percentage_free)"
+        format_below_threshold = "Warning: %percentage_avail"
+        low_threshold = 20
+        prefix_type = "custom"
+}
+
+disk "/hdd" {
+	format = "%free (%percentage_free)"
+        prefix_type = "custom"
+}
