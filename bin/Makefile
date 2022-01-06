@@ -3,3 +3,6 @@ audio: audio.go
 .PHONY: clean
 clean:
 	go clean -i
+.PHONY: install
+install: audio
+	mv audio ~/bin/audio

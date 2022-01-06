@@ -110,6 +110,7 @@ bindsym $mod+7 workspace 7
 bindsym $mod+8 workspace 8
 bindsym $mod+9 workspace 9
 bindsym $mod+0 workspace 10
+bindsym $mod+p workspace p
 
 # move focused container to workspace
 bindsym $mod+Shift+1 move container to workspace 1
@@ -161,25 +162,44 @@ bindsym $mod+r mode "resize"
 bar {
         # status_command i3status
         # net-speed.sh calls "i3status | ..." in the script itself.
-        # i3status-netusage is from https://github.com/danielmai/i3status-netusage
         status_command sh -c 'i3status | /home/dmai/go/bin/i3status-netusage --interface=enp10s0'
         bindsym --release button3 exec --no-startup-id import /tmp/latest-screenshot.png
 }
 
+# bar {
+#         colors {
+#                background #7F1D1D
+#         }
+#         id mute-bar
+#         position top
+#         tray_output none
+#         workspace_buttons none
+#         font pango:Fira Code 0
+#         mode invisible
+# }
+
+# dmai customization
 # bindsym $mod+Escape exec i3lock -i ~/Pictures/LockScreen/lockscreen.png -c 000000
 bindsym $mod+Escape exec /home/dmai/bin/lockscreen
+# bindsym $mod+F11 exec amixer -c $(arecord -l | grep Jabra | awk '{print $2}' | sed 's/://') sset Mic nocap
+# bindsym $mod+F12 exec amixer -c $(arecord -l | grep Jabra | awk '{print $2}' | sed 's/://') sset Mic cap
+# bindsym $mod+u exec amixer -c $(arecord -l | grep Jabra | awk '{print $2}' | sed 's/://') sset Mic toggle
+# bindsym $mod+F11 exec amixer -c $(arecord -l | grep Yeti | awk '{print $2}' | sed 's/://') sset Mic nocap
+# bindsym $mod+F12 exec amixer -c $(arecord -l | grep Yeti | awk '{print $2}' | sed 's/://') sset Mic cap
 
-# Shortcuts to mute/unmute Yeti microphone
-bindsym $mod+F11 exec amixer -c $(arecord -l | grep Yeti | awk '{print $2}' | sed 's/://') sset Mic nocap
-bindsym $mod+F12 exec amixer -c $(arecord -l | grep Yeti | awk '{print $2}' | sed 's/://') sset Mic cap
-bindsym $mod+u exec amixer -c $(arecord -l | grep Yeti | awk '{print $2}' | sed 's/://') sset Mic toggle
+bindsym $mod+F1           exec audio headphones
+bindsym $mod+F2           exec audio jabra
+bindsym $mod+F3           exec audio hdmi
+bindsym $mod+F11          exec audio mute-mic
+bindsym $mod+F12          exec audio unmute-mic
 
+bindsym $mod+u            exec amixer -c $(arecord -l | grep Yeti | awk '{print $2}' | sed 's/://') sset Mic toggle
 bindsym $mod+Shift+Return exec emacsclient -c
-bindsym $mod+Shift+B exec google-chrome
+bindsym $mod+Shift+B      exec google-chrome
 
-bindsym $mod+Shift+s [class="Slack"] focus
+bindsym $mod+Shift+s [class="Slack"]         focus
 bindsym $mod+Shift+n [class="Google-chrome"] focus
-bindsym $mod+Shift+t [class="zoom"] focus
-bindsym $mod+Shift+h [class="Emacs"] focus
-bindsym $mod+Shift+f [class="Firefox"] focus
-
+bindsym $mod+Shift+t [class="zoom"]          focus
+bindsym $mod+Shift+h [class="Emacs"]         focus
+bindsym $mod+Shift+f [class="Firefox"]       focus
+bindsym $mod+Shift+p [class="1Password"]     focus

@@ -45,7 +45,7 @@ path_exists VPN {
 }
 
 tztime local {
-        format = "<span foreground='darkorange'>SFO (-7:00):</span> %time"
+        format = "<span foreground='darkorange'>SFO (-8:00):</span> %time"
 	format_time = "%b %d %H:%M:%S"
 }
 
